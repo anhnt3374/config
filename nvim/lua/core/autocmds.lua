@@ -28,3 +28,11 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
     end
   end,
 })
+
+-- auto detect csv file
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "csv",
+  callback = function()
+    require("csvview").enable()
+  end,
+})

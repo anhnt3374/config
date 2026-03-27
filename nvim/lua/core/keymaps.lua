@@ -31,6 +31,11 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- search selected text
 keymap.set("v", "//", 'y/\\V<C-R>"<CR>')
 
+-- csv viewer
+keymap.set("n", "<leader>cv", function()
+  require("csvview").toggle()
+end, { desc = "CSV View Toggle" })
+
 --------------------------------------------------
 -- FILE / EXPLORER
 --------------------------------------------------
