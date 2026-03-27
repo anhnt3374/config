@@ -26,4 +26,77 @@ return {
       })
     end,
   },
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("tokyonight").setup({
+        style = "storm", -- gần VS Code nhất
+        transparent = false,
+      })
+      vim.cmd("colorscheme tokyonight")
+    end,
+  },
+  {
+    "projekt0n/github-nvim-theme",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("github-theme").setup({
+        options = {
+          theme_style = "dimmed", -- hoặc "dimmed"
+        },
+      })
+    end,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("gruvbox").setup({
+        contrast = "soft", -- 👈 rất quan trọng (dịu mắt)
+      })
+    end,
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    config = function()
+      require("ibl").setup()
+    end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "auto", -- tự theo colorscheme
+          section_separators = "",
+          component_separators = "",
+        },
+
+        sections = {
+          lualine_a = { { "mode", upper = true } },
+          lualine_b = {
+            "branch",
+            "diff",
+            {
+              "diagnostics",
+              sources = { "nvim_diagnostic" },
+            },
+          },
+          lualine_c = { { "filename", path = 1 } },
+
+          lualine_x = { "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
+        },
+      })
+    end,
+  },
 }
