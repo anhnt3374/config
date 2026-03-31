@@ -12,7 +12,9 @@ return {
           "javascript",
           "typescript",
           "html",
-          "css"
+          "css",
+          "markdown",
+          "markdown_inline"
         },
         highlight = {
           enable = true,
