@@ -1,9 +1,8 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    commit = "42fc28ba918343ebfd5565147a42a26580579482",
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" }, -- 🔥 quan trọng
+    lazy = false,
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
