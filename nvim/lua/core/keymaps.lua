@@ -41,6 +41,14 @@ end, { desc = "CSV View Toggle" })
 --------------------------------------------------
 
 keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<CR>") -- explorer
+keymap.set("n", "<leader>o", "<cmd>AerialToggle!<CR>", {
+  desc = "Toggle Outline",
+})
+keymap.set("n", "<leader>bm", function()
+  require("buffer_manager.ui").toggle_quick_menu()
+end, {
+  desc = "Buffer Manager",
+})
 
 --------------------------------------------------
 -- FORMAT
@@ -74,3 +82,16 @@ keymap.set("n", "[d", vim.diagnostic.goto_prev)
 keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
 keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>")
 keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>")
+
+-- TELESCOPE
+-- 🔍 search file (Ctrl+P)
+vim.keymap.set("n", "<C-p>", "<cmd>Telescope find_files<CR>")
+
+-- 🔍 search text toàn project (🔥 cái bạn cần)
+vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>")
+
+-- 🔍 search buffer đang mở
+vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
+
+-- 🔍 search trong file hiện tại
+vim.keymap.set("n", "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find<CR>")
