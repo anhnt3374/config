@@ -76,8 +76,9 @@ return {
       require("lualine").setup({
         options = {
           theme = "auto", -- tự theo colorscheme
-          section_separators = "",
-          component_separators = "",
+          ignore_focus = { 'NvimTree' },
+          section_separators = { left = '', right = '' },
+          component_separators = { left = '', right = '' },
         },
 
         sections = {
@@ -98,5 +99,8 @@ return {
         },
       })
     end,
+  },
+  {
+    "christoomey/vim-tmux-navigator",
   },
 }
