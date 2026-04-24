@@ -14,16 +14,23 @@ autocmd("BufWritePre", {
 })
 
 -- auto open panel when have error
-vim.api.nvim_create_autocmd("DiagnosticChanged", {
+vim.api.nvim_create_autocmd("BufWritePost", {
   callback = function(args)
     local bufnr = args.buf
 
-    -- lấy đúng diagnostics của buffer vừa update
-    local diagnostics = vim.diagnostic.get(bufnr)
+    -- lấy error diagnostics
+    local errors = vim.diagnostic.get(bufnr, {
+      severity = vim.diagnostic.severity.ERROR,
+    })
 
-    if #diagnostics > 0 then
+    if #errors > 0 then
       vim.schedule(function()
-        vim.cmd("Trouble diagnostics")
+        local trouble = require("trouble")
+
+        -- chỉ mở nếu chưa mở
+        if not trouble.is_open() then
+          trouble.open("diagnostics")
+        end
       end)
     end
   end,
